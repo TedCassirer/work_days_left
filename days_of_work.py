@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import datetime as dt
 import sys
 from bs4 import BeautifulSoup as bs
@@ -46,7 +48,6 @@ def get_work_days(start_date, end_date):
 	res = WorkDays._make(work)		
 	return work
 
-
 if __name__	== "__main__":
 	td = dt.date.today()
 	target = parse_date(sys.argv[1])
@@ -55,6 +56,3 @@ if __name__	== "__main__":
 	res = list(map(len, work))
 	print(WorkDays._make(res))
 	print("Days left: %i" % (sum(res)))			
-
-
-
