@@ -46,7 +46,7 @@ def get_work_days(start_date, end_date):
 	for date in daterange(start_date, end_date):
 		work[get_type_of_day(date)].append(str(date)) 
 	res = WorkDays._make(work)		
-	return work
+	return res
 
 if __name__	== "__main__":
 	td = dt.date.today()
@@ -55,4 +55,6 @@ if __name__	== "__main__":
 	work = get_work_days(td, target)
 	res = list(map(len, work))
 	print(WorkDays._make(res))
-	print("Days left: %i" % (sum(res)))			
+	print("Days left: %i" % (sum(res)))		
+	print("Next halfday is:", work.half_days[0])
+	print("Next holiday is:", work.holidays[0], holidays[parse_date(work.holidays[0])])	
