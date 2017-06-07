@@ -55,6 +55,10 @@ if __name__	== "__main__":
 	work = get_work_days(td, target)
 	res = list(map(len, work))
 	print(WorkDays._make(res))
-	print("Days left: %i" % (sum(res)))		
-	print("Next halfday is:", work.half_days[0])
-	print("Next holiday is:", work.holidays[0], holidays[parse_date(work.holidays[0])])	
+	print("Days left: %i" % (sum(res)))
+	if len(work.half_days) > 0:
+		holiday = holidays[parse_date(work.half_days[0]) + dt.timedelta(1)]
+		print("Next halfday is:", work.half_days[0], ". The day before", holiday)
+	if len(work.holidays) > 0:
+		holiday = holidays[parse_date(work.holidays[0])]
+		print("Next holiday is:", work.holidays[0], holiday)	
